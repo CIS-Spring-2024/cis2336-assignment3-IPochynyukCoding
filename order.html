@@ -6,6 +6,14 @@
     <title>Menu</title>
     <link rel="stylesheet" href="CSS/uhstyle.css"/>
     <style>
+        .cost{
+            text-align: right;
+            font-size: large;
+            div{
+                margin-bottom: 3em;
+                margin-right: 1rem;
+            }
+        }
     </style>
 <body>
     <header>
@@ -22,36 +30,50 @@
     </div>
     <main>
         <h1>Menu Items</h1>
-        <label for="borschCounter">Borsch</label>
-        <input type="number" min="0" id="borschCounter"/>
-
-        <label for="varenykyCounter">Varenyky</label>
-        <input type="number" min="0" id="varenykyCounter"/>
-
-        <label for="saloCounter">Salo</label>
-        <input type="number" min="0" id="saloCounter"/>
-
-        <label for="pampushkyCounter">Pampushky</label>
-        <input type="number" min="0" id="pampushkyCounter"/>
+        <div class="food">
+            <label for="borschCounter">Borsch</label>
+            <p>Price: $4.99</p>
+            <input type="number" class="menu" min="0" id="borschCounter"/>
+            <p>Total: $<span id="borschTotal"></span></p>
+        </div>
+            <label for="varenykyCounter">Varenyky</label>
+            <p>Price: $6.99</p>
+            <input type="number" class="menu" min="0" id="varenykyCounter"/>
+            <p>Total: $<span id="varenykyTotal"></span></p>
+            <label for="saloCounter">Salo</label>
+            <p>Price: $2.99</p>
+            <input type="number" class="menu" min="0" id="saloCounter"/>
+            <p>Total: $<span id="saloTotal"></span></p>
+            <label for="pampushkyCounter">Pampushky</label>
+            <p>Price: $7.99</p>
+            <input type="number" class="menu" min="0" id="pampushkyCounter"/>
+            <p>Total: $<span id="pampushkyTotal"></span></p>
         <div>
             <h1>Import Items</h1>
+            <p>Each import item is limited to 5 units per order.</p>
                 <label for="roshenCounter">Roshen Chocolate</label>
-                <input type="number" min="0" id="roshenCounter"/>
-
+                <p>Price: $1.50</p>
+                <input type="number" class="menu" min="0" max="5" id="roshenCounter"/>
+                <p>Total: $<span id="roshenTotal"></span></p>
                 <label for="zhivchikCounter">Zhivchik</label>
-                <input type="number" min="0" id="zhivchikCounter"/>
-
+                <p>Price: $3.99</p>
+                <input type="number" class="menu" min="0" max="5" id="zhivchikCounter"/>
+                <p>Total: $<span id="zhivchikTotal"></span></p>
                 <label for="flintCounter">Flint</label>
-                <input type="number" min="0" id="flintCounter"/>
-
+                <p>Price: $1.99</p>
+                <input type="number" class="menu" min="0" max="5" id="flintCounter"/>
+                <p>Total: $<span id="flintTotal"></span></p>
                 <label for="crazyBeeCounter">Crazy Bee</label>
-                <input type="number" min="0" id="crazyBeeCounter"/>
+                <p>Price: $0.99</p>
+                <input type="number" class="menu" min="0" max="5" id="crazyBeeCounter"/>
+                <p>Total: $<span id="crazyBeeTotal"></span></p>
         </div>
         <div class="cost">
-            <div>Subtotal: $<span id="subtotal">0</span></div>
-            <div>Tax: $<span id ="taxCost">0</span></div>
-            <div>Total: $<span id="totalCost">0</span></div>
+            <div>Subtotal: $<span class="menu" id="subTotal"></span></div>
+            <div>Tax: $<span class="menu" id ="taxCost"></span></div>
+            <div>Total: $<span class="menu" id="totalCost"></span></div>
         </div>
+        <button type="submit">Submit Order</button>
     </main>
-    <script src="order.js"></script>
+    <script src="/JS/order.js"></script>
 </body>
