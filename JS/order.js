@@ -1,5 +1,4 @@
-//Port HTML elements using ID values 
-
+//Port number input field to JS using ID values. 
 let borschCounterInput= document.getElementById("borschCounter");
 let varenykyCounterInput = document.getElementById("varenykyCounter");
 let saloCounterInput= document.getElementById("saloCounter");
@@ -12,7 +11,7 @@ let subTotalText = document.getElementById("subTotal");
 let taxText = document.getElementById("taxCost");
 let totalCostText = document.getElementById("totalCost");
 
-//Call to functions while user types
+//Call totalCost to start a reaction for total item cost, subtotal, and tax.
 borschCounterInput.addEventListener("keyup",totalCostCalculate);
 varenykyCounterInput.addEventListener("keyup",totalCostCalculate);
 saloCounterInput.addEventListener("keyup",totalCostCalculate);
@@ -22,7 +21,7 @@ zhivchikCounterInput.addEventListener("keyup",totalCostCalculate);
 flintCounterInput.addEventListener("keyup",totalCostCalculate);
 crazyBeeCounterInput.addEventListener("keyup",totalCostCalculate);
 
-//The function calculating the total price for each item
+//Functions for calculating total item costs
 function fBorschCost(){ 
     const borschCost= borschCounterInput.value*4.99;
     const borschCostAdjust=borschCost.toFixed(2);
@@ -51,10 +50,11 @@ function fPampushkyCost(){
     return pampushkyCostAdjust;
 }
 
+//Import item section with a limit of 5 units per item. 
 function fRoshenCost(){
     //Prevent user from ordering more than 5 units.
     if(roshenCounterInput.value>5){
-        alert("You cannot order more than 5 units per item.")
+        alert("You cannot order more than 5 units per import item.")
         roshenCounterInput.value = 5;
     }
     const roshenCost=roshenCounterInput.value*1.50;
@@ -66,7 +66,7 @@ function fRoshenCost(){
 function fZhivchikCost(){
     //Prevent user from ordering more than 5 units.
     if(zhivchikCounterInput.value>5){
-        alert("You cannot order more than 5 units per item.");
+        alert("You cannot order more than 5 units per import item.");
         zhivchikCounterInput.value = 5;
     }
     const zhivchikCost=zhivchikCounterInput.value*3.99;
@@ -79,7 +79,7 @@ function fFlintCost(){
     const flintCost=flintCounterInput.value*1.99;
     //Prevent user from ordering more than 5 units.
     if(flintCounterInput.value>5){
-        alert("You cannot order more than 5 units per item.")
+        alert("You cannot order more than 5 units per import item.")
         flintCounterInput.value = 5;
     }
     const flintCostAdjust = flintCost.toFixed(2);
@@ -91,7 +91,7 @@ function fCrazyBeeCost(){
     const crazyBeeCost=crazyBeeCounterInput.value*0.99;
     //Prevent user from ordering more than 5 units.
     if(crazyBeeCounterInput.value>5){
-        alert("You cannot order more than 5 units per item.")
+        alert("You cannot order more than 5 units per import item.")
         crazyBeeCounterInput.value = 5;
     }
     const crazyBeeCostAdjust = crazyBeeCost.toFixed(2);
@@ -99,7 +99,7 @@ function fCrazyBeeCost(){
     return crazyBeeCostAdjust;
 }
 
-//Calculate the total amount before and after sales tax and calculate tax
+//Calculate subtotal, sales tax, and total cost.
 
 function subTotalCalculate(){
     const subTotal = Number(fBorschCost(borschCounterInput)) + Number(fVarenykyCost(varenykyCounterInput)) + Number(fSaloCost(saloCounterInput)) + Number(fPampushkyCost(pampushkyCounterInput)) + Number(fRoshenCost(roshenCounterInput)) + Number(fZhivchikCost(zhivchikCounterInput)) + Number(fFlintCost(flintCounterInput)) + Number(fCrazyBeeCost(crazyBeeCounterInput));
