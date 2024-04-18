@@ -113,7 +113,15 @@ function calculateImportCost(menu){
 //Calculate subtotal, sales tax, and total cost.
 
 function subTotalCalculate(){
-    const subTotal = calculateMenuCost(0)+calculateMenuCost(1)+calculateMenuCost(2)+calculateMenuCost(3)+calculateImportCost(0)+calculateImportCost(1)+calculateImportCost(2)+calculateImportCost(3);
+    let subTotal = 0;
+    //Iterate through menu items to calculate subtotal
+    for (menu = 0;menu<menuItems.length;menu++){
+        subTotal+=calculateMenuCost(menu);
+    }
+    //Iterate through import items to calculate subtotal
+    for (impor = 0;impor<importItems.length;impor++){
+        subTotal+=calculateImportCost(impor);
+    }
     subTotalText.innerText=subTotal.toFixed(2);
     return subTotal;
 }
