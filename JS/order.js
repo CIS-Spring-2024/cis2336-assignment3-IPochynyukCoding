@@ -1,3 +1,7 @@
+/*Credits to MelkorNemesis for making the regular expression checker on lines 103-108
+Link to his blog article: https://melkornemesis.medium.com/prevent-unwanted-characters-in-input-f2967132decb */
+
+
 //Port number input field to JS using ID values. 
 let borschCounterInput= document.getElementById("borschCounter");
 let varenykyCounterInput = document.getElementById("varenykyCounter");
@@ -10,6 +14,8 @@ let crazyBeeCounterInput = document.getElementById("crazyBeeCounter");
 let subTotalText = document.getElementById("subTotal");
 let taxText = document.getElementById("taxCost");
 let totalCostText = document.getElementById("totalCost");
+//Get regex for not allowing people to use "e",".","+", and "-"
+let regex = /[e.+-]/gi;
 //Port total field using same method as above
 let borschCostTotal = document.getElementById("borschTotal");
 let varenykyCostTotal = document.getElementById("varenykyTotal");
@@ -19,6 +25,7 @@ let roshenCostTotal = document.getElementById("roshenTotal");
 let zhivchikCostTotal = document.getElementById("zhivchikTotal");
 let flintCostTotal = document.getElementById("flintTotal");
 let crazyBeeCostTotal = document.getElementById("crazyBeeTotal");
+
 
 //Arrays for more efficient calculations
 const menuItems = [
@@ -75,16 +82,31 @@ const importItems = [
 ]
 
 
-//Call totalCost to start a reaction for total item cost, subtotal, and tax.
+//Call totalCost to start a reaction for total item cost, subtotal, and tax, alongside checking each press for the forbidden symbols.
 borschCounterInput.addEventListener("keyup",totalCostCalculate);
+borschCounterInput.addEventListener("keypress",regularExpressionChecker);
 varenykyCounterInput.addEventListener("keyup",totalCostCalculate);
+varenykyCounterInput.addEventListener("keypress",regularExpressionChecker);
 saloCounterInput.addEventListener("keyup",totalCostCalculate);
+saloCounterInput.addEventListener("keypress",regularExpressionChecker);
 pampushkyCounterInput.addEventListener("keyup",totalCostCalculate);
+pampushkyCounterInput.addEventListener("keypress",regularExpressionChecker);
 roshenCounterInput.addEventListener("keyup",totalCostCalculate);
+roshenCounterInput.addEventListener("keypress",regularExpressionChecker);
 zhivchikCounterInput.addEventListener("keyup",totalCostCalculate);
+zhivchikCounterInput.addEventListener("keypress",regularExpressionChecker);
 flintCounterInput.addEventListener("keyup",totalCostCalculate);
+flintCounterInput.addEventListener("keypress",regularExpressionChecker);
 crazyBeeCounterInput.addEventListener("keyup",totalCostCalculate);
-
+crazyBeeCounterInput.addEventListener("keypress",regularExpressionChecker);
+//Function to prevent "+","-",".", and "e"
+function regularExpressionChecker(event){
+    regex.lastIndex=0;
+    if(regex.test(event.key)){
+        event.preventDefault();
+        alert("Invalid keypress detected.")
+    }
+}
 
 //Functions for calculating total item cost
 

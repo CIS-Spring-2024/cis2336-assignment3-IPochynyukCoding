@@ -31,3 +31,6 @@
 
 * [Andrew Pougher](https://jsfiddle.net/apougher/4ch51z2z/) (Made simple jQuery filter for checkboxes)
 
+## Assignment 3
+* [Furinkan](https://discordapp.com/users/351737307293941770) [Discord: Furinkan] (Helped me optimize my event callers)
+* [MelkorNemesis](https://melkornemesis.medium.com/prevent-unwanted-characters-in-input-f2967132decb) (Made a regular expression filter)
