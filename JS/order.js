@@ -101,10 +101,10 @@ crazyBeeCounterInput.addEventListener("keyup",totalCostCalculate);
 crazyBeeCounterInput.addEventListener("keypress",regularExpressionChecker);
 
 //Function to prevent "+","-",".", and "e" from being pressed
-function regularExpressionChecker(event){
+function regularExpressionChecker(e){
     regex.lastIndex=0;
-    if(regex.test(event.key)){
-        event.preventDefault();
+    if(regex.test(e.key)){
+        e.preventDefault();
         alert("Invalid keypress detected.")
     }
 }
