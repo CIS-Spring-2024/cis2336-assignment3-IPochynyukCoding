@@ -6,6 +6,38 @@
     <title>Menu</title>
     <link rel="stylesheet" href="CSS/uhstyle.css"/>
     <style>
+        main{
+            img{
+                    width: 10em;
+                    height: 5em;
+                }
+            .menu{
+                width:10%
+            }
+            label{
+                font-size: 2rem;
+            }
+            .email{
+                font-size: 1.5em;
+                margin-bottom: 2em;
+                text-align: center;
+                #address{
+                    font-size: 1em;
+                }
+            }
+            .importItems{
+                #alert{
+                    text-align: center;
+                }
+                #Zhivchik{
+                    width: 5em;
+                    height:10em;
+                }
+                #Flint{
+                    width:10em;
+                    height:10em;
+                }
+             }
         .cost{
             text-align: right;
             font-size: large;
@@ -14,6 +46,19 @@
                 margin-right: 1rem;
             }
         }
+    }
+    button {
+        font-size: 40px;
+        width:100%;
+        padding: 12px 16px;
+        margin-left:auto;
+        margin-right:auto;
+        border: none;
+        border-radius: 20px;
+        background-color: #C8102E;
+        color:white;
+        cursor:pointer;
+    }
     </style>
 <body>
     <header>
@@ -29,41 +74,48 @@
     </div>
     <main>
         <h1>Menu Items</h1>
-        <div class="food">
+        <div class="menuItems">
             <label for="borschCounter">Borsch</label>
             <p>Price: $4.99</p>
+            <img src="img/menu/Borsch.png">
             <input type="number" class="menu" min="0" id="borschCounter"/>
             <p>Total: $<span id="borschTotal"></span></p>
-        </div>
             <label for="varenykyCounter">Varenyky</label>
             <p>Price: $6.99</p>
+            <img src="/img/menu/Varenyky.png">
             <input type="number" class="menu" min="0" id="varenykyCounter"/>
             <p>Total: $<span id="varenykyTotal"></span></p>
             <label for="saloCounter">Salo</label>
             <p>Price: $2.99</p>
+            <img src="/img/menu/Salo.png">
             <input type="number" class="menu" min="0" id="saloCounter"/>
             <p>Total: $<span id="saloTotal"></span></p>
             <label for="pampushkyCounter">Pampushky</label>
             <p>Price: $7.99</p>
+            <img src="/img/menu/Pampushky.png">
             <input type="number" class="menu" min="0" id="pampushkyCounter"/>
             <p>Total: $<span id="pampushkyTotal"></span></p>
-        <div>
+        <div class="importItems">
             <h1>Import Items</h1>
-            <p>Each import item is limited to 5 units per order.</p>
+            <p id="alert">Each import item is limited to 5 units per order.</p>
                 <label for="roshenCounter">Roshen Chocolate</label>
                 <p>Price: $1.50</p>
+                <img src="/img/menu/RoshenBar.png">
                 <input type="number" class="menu" min="0" max="5" id="roshenCounter"/>
                 <p>Total: $<span id="roshenTotal"></span></p>
                 <label for="zhivchikCounter">Zhivchik</label>
                 <p>Price: $3.99</p>
+                <img src="/img/menu/Zhivchik.png" id="Zhivchik">
                 <input type="number" class="menu" min="0" max="5" id="zhivchikCounter"/>
                 <p>Total: $<span id="zhivchikTotal"></span></p>
                 <label for="flintCounter">Flint</label>
                 <p>Price: $1.99</p>
+                <img src="/img/menu/Flint.png" id="Flint">
                 <input type="number" class="menu" min="0" max="5" id="flintCounter"/>
                 <p>Total: $<span id="flintTotal"></span></p>
                 <label for="crazyBeeCounter">Crazy Bee</label>
                 <p>Price: $0.99</p>
+                <img src="/img/menu/CrazyBee.png">
                 <input type="number" class="menu" min="0" max="5" id="crazyBeeCounter"/>
                 <p>Total: $<span id="crazyBeeTotal"></span></p>
         </div>
@@ -71,6 +123,11 @@
             <div>Subtotal: $<span class="menu" id="subTotal"></span></div>
             <div>Tax: $<span class="menu" id ="taxCost"></span></div>
             <div>Total: $<span class="menu" id="totalCost"></span></div>
+        </div>
+        <div class="email">
+            <p id="emailLabel">Please enter email address for us to confirm your order.</p>
+            <label id="address">Email Address:</label>
+            <input type="text" class="confirmation" id="email" required/>
         </div>
         <button type="submit" id="submit">Submit Order</button>
     </main>
