@@ -5,9 +5,7 @@
 
 * Menu ✅
 
-* Order ❌
-
-* Review Us ❌
+* Order ✅
 
 * Partner ✅
 
