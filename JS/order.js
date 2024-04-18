@@ -99,7 +99,8 @@ flintCounterInput.addEventListener("keyup",totalCostCalculate);
 flintCounterInput.addEventListener("keypress",regularExpressionChecker);
 crazyBeeCounterInput.addEventListener("keyup",totalCostCalculate);
 crazyBeeCounterInput.addEventListener("keypress",regularExpressionChecker);
-//Function to prevent "+","-",".", and "e"
+
+//Function to prevent "+","-",".", and "e" from being pressed
 function regularExpressionChecker(event){
     regex.lastIndex=0;
     if(regex.test(event.key)){
@@ -111,20 +112,13 @@ function regularExpressionChecker(event){
 //Functions for calculating total item cost
 
 function calculateMenuCost(menu){
-    if (menuItems[menu]["counter-input"].value<0){ 
-        alert("You cannot have negative items.");
-        menuItems[menu]["counter-input"].value=0;
-    }
     const menuCost = menuItems[menu]["counter-input"].value*menuItems[menu]["price"];
     menuItems[menu]["total"].innerText = menuCost.toFixed(2);
     return menuCost;
 }
 
 function calculateImportCost(menu){
-    if (importItems[menu]["counter-input"].value<0){
-        alert("You cannot have negative items!");
-        importItems[menu]["counter-input"].value=0;
-    } else if (importItems[menu]["counter-input"].value>5){
+    if (importItems[menu]["counter-input"].value>5){
         alert("You cannot order more than 5 units per item.");
         importItems[menu]["counter-input"].value=5;
     }
@@ -158,5 +152,21 @@ function taxCalculate(){
 function totalCostCalculate(){
     const totalCost = taxCalculate()+subTotalCalculate();
     totalCostText.innerText=totalCost.toFixed(2);
+    return totalCost;
 }
 
+document.querySelector('button[type="submit"]').addEventListener('click', function(e) {
+    //Prevent user from submitting if they don't order anything.
+    if (totalCostCalculate() === 0) {
+        alert("You hadn't ordered anything, please order something!");
+        e.preventDefault();
+    } 
+    //Otherwise, give confirmation if the user ordered something.
+    else if (confirm("Press OK to submit your order or press Cancel to continue with this page.")) {
+    
+    } 
+    //If they cancel, they go back to their current session.
+    else{
+        e.preventDefault();
+    }
+});
